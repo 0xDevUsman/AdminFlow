@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-neutral-800;
+  }
+
+  body {
+    @apply bg-black text-white;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-neutral-400 hover:text-white hover:bg-neutral-800/50 transition-all duration-300;
+  }
+
+  .sidebar-link.active {
+    @apply text-white bg-neutral-800 shadow-lg;
+  }
+
+  .card {
+    @apply bg-neutral-900 border border-neutral-800 rounded-2xl p-4 sm:p-6 hover:bg-neutral-800/30 transition-all duration-300;
+  }
+
+  .glass-card {
+    @apply bg-neutral-900/50 backdrop-blur-xl border border-neutral-800/50 rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply bg-white text-black hover:bg-neutral-200 px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 text-sm sm:text-base;
+  }
+
+  .btn-secondary {
+    @apply bg-neutral-800 text-white hover:bg-neutral-700 px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base;
+  }
+
+  .input-field {
+    @apply bg-neutral-900 border border-neutral-700 rounded-xl px-3 sm:px-4 py-2 sm:py-3 text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-neutral-600 transition-all duration-300 text-sm sm:text-base;
+  }
+
+  .table-row {
+    @apply border-b border-neutral-800 hover:bg-neutral-900/50 transition-all duration-300;
+  }
+
+  .stat-card {
+    @apply bg-neutral-900 border border-neutral-800 rounded-2xl p-4 sm:p-6 hover:bg-neutral-800/30 transition-all duration-300 cursor-pointer;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-600;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #262626 25%, #404040 50%, #262626 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .card {
+    @apply p-4;
+  }
+
+  .stat-card {
+    @apply p-4;
+  }
+}

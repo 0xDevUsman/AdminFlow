@@ -1,13 +1,23 @@
-"use client"
+"use client";
 
-import { motion, AnimatePresence } from "framer-motion"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { LayoutDashboard, Users, BarChart3, FileText, Shield, Settings, User, X, Zap } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  LayoutDashboard,
+  Users,
+  BarChart3,
+  FileText,
+  Shield,
+  Settings,
+  User,
+  X,
+  Zap,
+} from "lucide-react";
 
 interface MobileSidebarProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 const menuItems = [
@@ -18,10 +28,10 @@ const menuItems = [
   { icon: Shield, label: "Security", href: "/security" },
   { icon: Settings, label: "Settings", href: "/settings" },
   { icon: User, label: "Profile", href: "/profile" },
-]
+];
 
 export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <AnimatePresence>
@@ -72,8 +82,8 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
             <nav className="flex-1 p-4">
               <ul className="space-y-2">
                 {menuItems.map((item, index) => {
-                  const isActive = pathname === item.href
-                  const Icon = item.icon
+                  const isActive = pathname === item.href;
+                  const Icon = item.icon;
 
                   return (
                     <motion.li
@@ -86,20 +96,22 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
                         <motion.div
                           whileHover={{ x: 4, scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className={`sidebar-link ${isActive ? "active" : ""} relative`}
+                          className={`sidebar-link ${
+                            isActive ? "active" : ""
+                          } relative`}
                         >
                           <Icon className="w-5 h-5 flex-shrink-0" />
                           <span className="font-medium">{item.label}</span>
                           {isActive && (
                             <motion.div
                               layoutId="mobileActiveIndicator"
-                              className="absolute right-2 w-2 h-2 bg-white rounded-full"
+                              className="absolute right-4 w-2 h-2 bg-white rounded-full"
                             />
                           )}
                         </motion.div>
                       </Link>
                     </motion.li>
-                  )
+                  );
                 })}
               </ul>
             </nav>
@@ -115,5 +127,5 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
         </>
       )}
     </AnimatePresence>
-  )
+  );
 }

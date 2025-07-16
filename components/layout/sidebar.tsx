@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Users,
@@ -14,11 +14,11 @@ import {
   ChevronLeft,
   ChevronRight,
   Zap,
-} from "lucide-react"
+} from "lucide-react";
 
 interface SidebarProps {
-  isOpen: boolean
-  onToggle: () => void
+  isOpen: boolean;
+  onToggle: () => void;
 }
 
 const menuItems = [
@@ -29,17 +29,17 @@ const menuItems = [
   { icon: Shield, label: "Security", href: "/security" },
   { icon: Settings, label: "Settings", href: "/settings" },
   { icon: User, label: "Profile", href: "/profile" },
-]
+];
 
 export function Sidebar({ isOpen, onToggle }: SidebarProps) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <motion.aside
       initial={false}
       animate={{ width: isOpen ? 280 : 80 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="bg-neutral-900/50 backdrop-blur-xl border-r border-neutral-800 flex flex-col relative z-10 hidden lg:flex"
+      className="bg-neutral-900/50 backdrop-blur-xl border-r border-neutral-800 flex-col relative z-10 hidden lg:flex"
     >
       {/* Header */}
       <div className="p-6 border-b border-neutral-800">
@@ -60,19 +60,6 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
               </div>
             )}
           </motion.div>
-
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={onToggle}
-            className="p-2 rounded-lg hover:bg-neutral-800 transition-colors"
-          >
-            {isOpen ? (
-              <ChevronLeft className="w-5 h-5 text-neutral-400" />
-            ) : (
-              <ChevronRight className="w-5 h-5 text-neutral-400" />
-            )}
-          </motion.button>
         </div>
       </div>
 
@@ -80,8 +67,8 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
       <nav className="flex-1 p-4">
         <ul className="space-y-2">
           {menuItems.map((item, index) => {
-            const isActive = pathname === item.href
-            const Icon = item.icon
+            const isActive = pathname === item.href;
+            const Icon = item.icon;
 
             return (
               <motion.li
@@ -94,7 +81,9 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
                   <motion.div
                     whileHover={{ x: 4, scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`sidebar-link ${isActive ? "active" : ""} relative`}
+                    className={`sidebar-link ${
+                      isActive ? "active" : ""
+                    } relative`}
                   >
                     <Icon className="w-5 h-5 flex-shrink-0" />
                     <motion.span
@@ -111,13 +100,13 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
                     {isActive && (
                       <motion.div
                         layoutId="activeIndicator"
-                        className="absolute right-2 w-2 h-2 bg-white rounded-full"
+                        className="absolute right-4 w-2 h-2 bg-white rounded-full"
                       />
                     )}
                   </motion.div>
                 </Link>
               </motion.li>
-            )
+            );
           })}
         </ul>
       </nav>
@@ -132,12 +121,12 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
         >
           {isOpen && (
             <div>
-              <p>© 2024 AdminPro</p>
-              <p className="mt-1">v2.1.0</p>
+              <p>© 2025 AdminPro</p>
+              <p className="mt-1">Built by 0xDevUsman ❤️</p>
             </div>
           )}
         </motion.div>
       </div>
     </motion.aside>
-  )
+  );
 }
